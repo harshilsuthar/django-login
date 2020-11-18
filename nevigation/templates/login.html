@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<title>Login V2</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}" />
+
+		<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+
+		<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+
+		<link rel="stylesheet" type="text/css"
+			  href="{% static 'fonts/iconic/css/material-design-iconic-font.min.css' %}">
+
+		<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+
+		<link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+
+		<link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
+
+		<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+
+		<link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
+
+		<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+	</head>
+
+	<body>
+		<div class="limiter">
+			<div class="container-login100">
+				<div class="wrap-login100">
+					<form class="login100-form validate-form" method="POST">
+						{% csrf_token %}
+						<span class="login100-form-title p-b-26">
+							Welcome
+						</span>
+						<!-- A image in file -->
+						<span class="login100-form-title p-b-48">
+							<i class="zmdi zmdi-font"></i>
+						</span>
+
+						<!-- username div -->
+						<div class="mt-4">
+							<div class="wrap-input100 mb-1">
+								{{ form.username }}
+								<span class="focus-input100" data-placeholder="{{ form.username.label }}"></span>
+							</div>
+							
+							{% if form.errors.username %}
+							<div class="mt-1 alert alert-danger">{{ form.errors.username }}</div>
+							{% endif %}
+						</div>
+
+						<!-- password div -->
+						<div class="mt-4">
+							<div class="wrap-input100" data-validate="Enter password">
+								<span class="btn-show-pass">
+									<i class="zmdi zmdi-eye"></i>
+								</span>
+								{{ form.password }}
+								<span class="focus-input100" data-placeholder="{{ form.password.label }}"></span>
+							</div>
+							
+							{% if form.errors.password %}
+							<div class="mt-1 alert alert-danger">{{ form.errors.password  }}</div>
+							{% endif %}
+						</div>
+
+						<!-- other errors  -->
+						{% if form.non_field_errors %}
+						<div>
+							<h6 class="alert alert-danger">{{ form.non_field_errors }}</h6>
+						</div>
+						{% endif %}
+
+						<!-- submit button -->
+						<div class="container-login100-form-btn">
+							<div class="wrap-login100-form-btn">
+								<div class="login100-form-bgbtn"></div>
+								<button class="login100-form-btn" type="submit">
+									Login
+								</button>
+							</div>
+						</div>
+
+						<!-- don't have account link -->
+						<div class="text-center p-t-50">
+							<span class="txt1">
+								Don’t have an account?
+							</span>
+							<a class="txt2" href="{% url 'nevigate:Register'%}">
+								Sign Up
+							</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div id="dropDownSelect1"></div>
+
+		<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+
+		<script src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
+
+		<script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+		<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+		<script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+
+		<script src="{% static 'vendor/daterangepicker/moment.min.js' %}"></script>
+		<script src="{% static 'vendor/daterangepicker/daterangepicker.js' %}"></script>
+
+		<script src="{% static 'vendor/countdowntime/countdowntime.js' %}"></script>
+
+		<script src="{% static 'js/main.js' %}"></script>
+
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() { dataLayer.push(arguments); }
+			gtag('js', new Date());
+
+			gtag('config', 'UA-23581568-13');
+		</script>
+	</body>
+	<!-- this will check if any text field is written or not -->
+	<script>
+		$(".input100").each(function () {
+			if ($(this).val().trim() != "") {
+				$(this).addClass("has-val");
+			} else {
+				$(this).removeClass("has-val");
+			}
+		});
+	</script>
+
+</html>
